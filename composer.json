@@ -1,0 +1,8 @@
+{
+    "name": "joncrain/mr-micromdm",
+    "description": "MicroMDM module for munkireport.",
+    "license": "MIT",
+    "require": {
+        "php":"^7.0"
+    }
+}
