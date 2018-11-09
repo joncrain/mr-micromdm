@@ -1,0 +1,17 @@
+app/db/*
+
+*.bak
+
+app/views/dashboard/custom_dashboard.php
+
+custom
+
+config.php
+*.DS_Store
+
+*.zip
+
+vendor/*
+
+composer.lock
+.env
