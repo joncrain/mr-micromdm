@@ -42,22 +42,21 @@ class micromdm_controller extends Module_controller
      **/
     public function restart_computer_micromdm($serial = '')
     {
-        // Authenticate
-        if (! $this->authorized()) {
-            die('Authenticate first.'); // Todo: return json?
+        {
+            // Authenticate
+            if (! $this->authorized()) {
+                die('Authenticate first.'); // Todo: return json?
+            }
+            if (authorized_for_serial($serial)) {
+                $micromdm = new micromdm_model($serial);
+                $machine = new Machine_model($serial);
+                $platform_UUID = $machine->platform_UUID;
+                $command = 'RestartDevice';
+                //$micromdm->get_micromdm_command($force=TRUE);
+                    $micromdm->run_micromdm_command($platform_UUID, $command);
+            }
+            redirect("clients/detail/$serial#tab_micromdm-tab");
         }
-        if (authorized_for_serial($serial)) {
-            $micromdm = new micromdm_model($serial);
-            $sql = "select platform_UUID from machine
-            where serial_number = '$serial'";
-
-            $platform_UUID = '';
-            $command = 'SecurityInfo'; // not set to RestartDevice yet, because my dev machine is the only one in MR and I don't want to accidently restart it.
-            //$micromdm->get_micromdm_command($force=TRUE);
-                $micromdm->run_micromdm_command($platform_UUID, $command);
-        }
-        redirect("clients/detail/$serial#tab_micromdm-tab");
     }
-
 
 } // END class default_module
