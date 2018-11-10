@@ -1,12 +1,15 @@
 {
     "link": "micromdm Link",
     "listing": {
-        "title": "micromdm Report"
+        "title": "MicroMDM"
     },
     "report": {
-        "title": "micromdm Report"
+        "title": "MicroMDM Report"
     },
     "widget": {
-        "title": "micromdm Widget"
-    }
+        "title": "MicroMDM Widget"
+    },
+    "restart": "Restart Computer",
+    "machine_udid": "Machine UDID",
+    "latestresponse": "Latest Response"
 }

@@ -6,10 +6,9 @@ class micromdm_model extends \Model {
 	function __construct($serial='')
 	{
 		parent::__construct('id', 'micromdm'); //primary key, tablename
-		$this->rs['id'] = '';
-		$this->rs['serial_number'] = $serial; $this->rt['serial_number'] = 'VARCHAR(255) UNIQUE';
-        $this->rs['item1'] = '';
-        $this->rs['item2'] = 0;
+		$this->rs['id'] = 0;
+		$this->rs['serial_number'] = $serial;
+        $this->rs['latestresponse'] = '';
 
         // Array with fields that can't be set by process
         $this->restricted = array('id', 'serial_number');
@@ -18,7 +17,7 @@ class micromdm_model extends \Model {
 		$this->schema_version = 0;
 
 		// Create table if it does not exist
-		//$this->create_table();
+		// $this->create_table();
 
 		if ($serial)
 			$this->retrieveOne('serial_number=?', $serial);
@@ -62,4 +61,36 @@ class micromdm_model extends \Model {
 
 		$this->save();
 	}
+    /**
+     * Run Command via MicroMDM
+     *
+     * @return void
+     * @author Jon Crain
+     **/
+    //function get_micromdm_command($force = FALSE)
+    public function run_micromdm_command($platform_UUID, $micromdm_command)
+    {
+		$ch = curl_init();
+		$micromdmapi_url = conf('micromdmapi_url');
+		$micromdmapi_command = $micromdm_command;
+		$micromdmapi_username = conf('micromdmapi_username');
+		$micromdmapi_password = conf('micromdmapi_password');
+		$json_data = "{\"udid\":\"$platform_UUID\"}";
+		# need to add in optional json data here in the future
+		curl_setopt($ch, CURLOPT_URL, "$micromdmapi_url$micromdmapi_command");
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_USERPWD, "$micromdmapi_username:$micromdmapi_password");
+
+		$headers = array();
+		$headers[] = "Content-Type: application/json";
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+		$result = curl_exec($ch);
+		if (curl_errno($ch)) {
+			echo 'Error:' . curl_error($ch);
+		}
+		curl_close ($ch);
+    }
 }

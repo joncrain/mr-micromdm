@@ -19,6 +19,8 @@ new micromdm_model;
 		      	<th data-i18n="listing.computername" data-colname='machine.computer_name'></th>
 		        <th data-i18n="serial" data-colname='reportdata.serial_number'></th>
 		        <th data-i18n="username" data-colname='reportdata.long_username'></th>
+		        <th data-i18n="micromdm.machine_udid" data-colname='machine.platform_UUID'></th>
+		        <th data-i18n="micromdm.latestresponse" data-colname='micromdm.latestresponse'></th>
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -62,7 +64,7 @@ new micromdm_model;
 	        	var name=$('td:eq(0)', nRow).html();
 	        	if(name == ''){name = "No Name"};
 	        	var sn=$('td:eq(1)', nRow).html();
-	        	var link = mr.getClientDetailLink(name, sn);
+	        	var link = mr.getClientDetailLink(name, sn, '#tab_micromdm-tab');
 	        	$('td:eq(0)', nRow).html(link);
 
 	        }
