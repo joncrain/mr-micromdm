@@ -52,7 +52,7 @@ class micromdm_controller extends Module_controller
             where serial_number = '$serial'";
 
             $platform_UUID = '';
-            $command = 'SecurityInfo';
+            $command = 'SecurityInfo'; // not set to RestartDevice yet, because my dev machine is the only one in MR and I don't want to accidently restart it.
             //$micromdm->get_micromdm_command($force=TRUE);
                 $micromdm->run_micromdm_command($platform_UUID, $command);
         }
