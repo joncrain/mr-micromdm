@@ -2,7 +2,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Capsule\Manager as Capsule;
-class micromdm extends Migration
+class Micromdm extends Migration
 {
     public function up()
     {
@@ -10,8 +10,8 @@ class micromdm extends Migration
         $capsule::schema()->create('micromdm', function (Blueprint $table) {
             $table->increments('id');
             $table->string('serial_number')->unique();
-            $table->string('machine_udid');
-            $table->string('latestresponse');
+            $table->string('machine_udid')->nullable();
+            $table->string('latestresponse')->nullable();
         });
     }
     public function down()

@@ -10,6 +10,6 @@
         "title": "MicroMDM Widget"
     },
     "restart": "Restart Computer",
-    "machine_udid": "Machine UDID",
+    "machine_udid": "Machine UUID",
     "latestresponse": "Latest Response"
 }
