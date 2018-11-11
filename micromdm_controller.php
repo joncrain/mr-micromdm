@@ -1,20 +1,30 @@
 <?php 
 
 /**
- * micromdm class
+ * Micromdm_controller class
  *
  * @package munkireport
  * @author 
  **/
-class micromdm_controller extends Module_controller
+class Micromdm_controller extends Module_controller
 {
-	
-	/*** Protect methods with auth! ****/
-	function __construct()
-	{
-		// Store module path
-		$this->module_path = dirname(__FILE__);
-	}
+
+    /*** Protect methods with auth! ****/
+    function __construct()
+    {
+        // Store module path
+        $this->module_path = dirname(__FILE__);
+    }
+    
+    /**
+     * Default method
+     *
+     * @author avb
+     **/
+    function index()
+    {
+        echo "You've loaded the micromdm module!";
+    }
 	
     /**
      * Get micromdm information for serial_number
@@ -53,10 +63,10 @@ class micromdm_controller extends Module_controller
                 $platform_UUID = $machine->platform_UUID;
                 $command = 'RestartDevice';
                 //$micromdm->get_micromdm_command($force=TRUE);
-                    $micromdm->run_micromdm_command($platform_UUID, $command);
+                $micromdm->run_micromdm_command($platform_UUID, $command);
             }
             redirect("clients/detail/$serial#tab_micromdm-tab");
         }
     }
 
-} // END class default_module
+} // END class Micromdm_controller
