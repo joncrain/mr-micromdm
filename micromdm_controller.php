@@ -4,7 +4,7 @@
  * Micromdm_controller class
  *
  * @package munkireport
- * @author 
+ * @author Jon Crain
  **/
 class Micromdm_controller extends Module_controller
 {
@@ -61,9 +61,34 @@ class Micromdm_controller extends Module_controller
                 $micromdm = new micromdm_model($serial);
                 $machine = new Machine_model($serial);
                 $platform_UUID = $machine->platform_UUID;
-                $command = 'RestartDevice';
+                $request_type = 'RestartDevice';
                 //$micromdm->get_micromdm_command($force=TRUE);
-                $micromdm->run_micromdm_command($platform_UUID, $command);
+                $micromdm->run_micromdm_command($platform_UUID, $request_type);
+            }
+            redirect("clients/detail/$serial#tab_micromdm-tab");
+        }
+    }
+
+    /**
+     * SecurityInfo Command
+     *
+     * @return void
+     * @author Jon Crain
+     **/
+    public function security_info_micromdm($serial = '')
+    {
+        {
+            // Authenticate
+            if (! $this->authorized()) {
+                die('Authenticate first.'); // Todo: return json?
+            }
+            if (authorized_for_serial($serial)) {
+                $micromdm = new micromdm_model($serial);
+                $machine = new Machine_model($serial);
+                $platform_UUID = $machine->platform_UUID;
+                $request_type = 'SecurityInfo';
+                //$micromdm->get_micromdm_command($force=TRUE);
+                $micromdm->run_micromdm_command($platform_UUID, $request_type);
             }
             redirect("clients/detail/$serial#tab_micromdm-tab");
         }

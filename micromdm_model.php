@@ -9,6 +9,8 @@ class Micromdm_model extends \Model {
         $this->rs['id'] = 0;
         $this->rs['serial_number'] = $serial;
         $this->rs['latestresponse'] = '';
+        $this->rs['device_lock_pin'] = '';
+        $this->rs['latestresponse'] = '';
 
         // Array with fields that can't be set by process
         $this->restricted = array('id', 'serial_number');
@@ -63,20 +65,19 @@ class Micromdm_model extends \Model {
      * @author Jon Crain
      **/
     //function get_micromdm_command($force = FALSE)
-    public function run_micromdm_command($platform_UUID, $micromdm_command)
+    public function run_micromdm_command($platform_UUID, $request_type)
     {
         $ch = curl_init();
-        $micromdmapi_url = conf('micromdmapi_url');
-        $micromdmapi_command = $micromdm_command;
+        $micromdmapi_url = conf('micromdmapi_url') . '/v1/commands';
+        $micromdmapi_key = conf('micromdmapi_key');
         $micromdmapi_username = conf('micromdmapi_username');
-        $micromdmapi_password = conf('micromdmapi_password');
-        $json_data = "{\"udid\":\"$platform_UUID\"}";
+        $json_data = "{\"udid\":\"$platform_UUID\",\"request_type\":\"$request_type\"}";
         # need to add in optional json data here in the future
-        curl_setopt($ch, CURLOPT_URL, "$micromdmapi_url$micromdmapi_command");
+        curl_setopt($ch, CURLOPT_URL, "$micromdmapi_url");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
         curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_USERPWD, "$micromdmapi_username:$micromdmapi_password");
+        curl_setopt($ch, CURLOPT_USERPWD, "$micromdmapi_username:$micromdmapi_key");
 
         $headers = array();
         $headers[] = "Content-Type: application/json";
