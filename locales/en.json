@@ -11,6 +11,6 @@
     },
     "restart": "Restart Computer",
     "security_info": "Request Security Info",
-    "machine_udid": "Machine UUID",
+    "enrollment_status": "Enrollment Status",
     "latestresponse": "Latest Response"
 }
