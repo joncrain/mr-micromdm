@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # micromdm controller
-CTL="${BASEURL}index.php?/module/micromdm/"
+MMDM_CTL="${BASEURL}index.php?/module/micromdm/"
 
 # Get the scripts in the proper directories
-${CURL} "${CTL}get_script/micromdm.sh" -o "${MUNKIPATH}preflight.d/micromdm.sh"
+${CURL} "${MMDM_CTL}get_script/micromdm.sh" -o "${MUNKIPATH}preflight.d/micromdm.sh"
 
 # Check exit status of curl
 if [ $? = 0 ]; then

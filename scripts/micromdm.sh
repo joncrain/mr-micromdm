@@ -18,7 +18,15 @@ fi
 mkdir -p "${CACHEDIR}"
 
 # Business logic goes here
+micromdm_profile_identifier="com.github.micromdm.micromdm.enroll"
+enroll_check=$(profiles list | grep $micromdm_profile_identifier)
+if [ $? = 0 ]; then
+	echo 'Machine Enrolled in MicroMDM'
+	enrollment='Enrolled'
+else
+	echo 'Machine Not Enrolled in MicroMDM'
+	enrollment='Not Enrolled'
+fi
 
 # Output data here
-echo "item1${SEPARATOR}string value" > ${OUTPUT_FILE}
-echo "item2${SEPARATOR}100" >> ${OUTPUT_FILE}
+echo "enrollment_status${SEPARATOR}$enrollment" > ${OUTPUT_FILE}
