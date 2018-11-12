@@ -8,9 +8,10 @@ class Micromdm_model extends \Model {
         parent::__construct('id', 'micromdm'); //primary key, tablename
         $this->rs['id'] = 0;
         $this->rs['serial_number'] = $serial;
+        $this->rs['enrollment_status'] = '';
         $this->rs['latestresponse'] = '';
         $this->rs['device_lock_pin'] = '';
-        $this->rs['latestresponse'] = '';
+        $this->rs['erase_device_pin'] = '';
 
         // Array with fields that can't be set by process
         $this->restricted = array('id', 'serial_number');
