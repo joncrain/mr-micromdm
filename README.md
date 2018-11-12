@@ -1,5 +1,9 @@
 # MicroMDM module
 
+```php
+composer require joncrain/mr-micromdm
+```
+
 This will be the middleware and webhook for a MicroMDM instance. Right now it functions by talking to some [custom middleware](https://joncrain.github.io/2018/11/08/micromdm_munki_partiii.html) for MicroMDM. 
 
 Need to add in the ability to create and store DeviceLock/EraseDevice codes as well.
@@ -40,3 +44,5 @@ Other commands are a little more complex and it would be nice to have a call for
 ## Input Data
 
 Need to setup the ability to intake the webhook from micromdm. That's a lot of json data, not sure how to best handle it...
+
+One thought is to create a table just for the webhook data and tie back to the MMDM table on UDID.
