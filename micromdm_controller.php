@@ -94,4 +94,181 @@ class Micromdm_controller extends Module_controller
         }
     }
 
+    /**
+     * AvailableOSUpdates Command
+     *
+     * @return void
+     * @author Jon Crain
+     **/
+    public function available_os_updates_micromdm($serial = '')
+    {
+        {
+            // Authenticate
+            if (! $this->authorized()) {
+                die('Authenticate first.'); // Todo: return json?
+            }
+            if (authorized_for_serial($serial)) {
+                $micromdm = new micromdm_model($serial);
+                $machine = new Machine_model($serial);
+                $platform_UUID = $machine->platform_UUID;
+                $request_type = 'AvailableOSUpdates';
+                //$micromdm->get_micromdm_command($force=TRUE);
+                $micromdm->run_micromdm_command($platform_UUID, $request_type);
+            }
+            redirect("clients/detail/$serial#tab_micromdm-tab");
+        }
+    }
+
+    /**
+     * CertificateList Command
+     *
+     * @return void
+     * @author Jon Crain
+     **/
+    public function certificate_list_micromdm($serial = '')
+    {
+        {
+            // Authenticate
+            if (! $this->authorized()) {
+                die('Authenticate first.'); // Todo: return json?
+            }
+            if (authorized_for_serial($serial)) {
+                $micromdm = new micromdm_model($serial);
+                $machine = new Machine_model($serial);
+                $platform_UUID = $machine->platform_UUID;
+                $request_type = 'CertificateList';
+                //$micromdm->get_micromdm_command($force=TRUE);
+                $micromdm->run_micromdm_command($platform_UUID, $request_type);
+            }
+            redirect("clients/detail/$serial#tab_micromdm-tab");
+        }
+    }
+
+    /**
+     * InstalledApplicationList Command
+     *
+     * @return void
+     * @author Jon Crain
+     **/
+    public function installed_application_list_micromdm($serial = '')
+    {
+        {
+            // Authenticate
+            if (! $this->authorized()) {
+                die('Authenticate first.'); // Todo: return json?
+            }
+            if (authorized_for_serial($serial)) {
+                $micromdm = new micromdm_model($serial);
+                $machine = new Machine_model($serial);
+                $platform_UUID = $machine->platform_UUID;
+                $request_type = 'InstalledApplicationList';
+                //$micromdm->get_micromdm_command($force=TRUE);
+                $micromdm->run_micromdm_command($platform_UUID, $request_type);
+            }
+            redirect("clients/detail/$serial#tab_micromdm-tab");
+        }
+    }
+
+    /**
+     * OSUpdateStatus Command
+     *
+     * @return void
+     * @author Jon Crain
+     **/
+    public function os_update_status_micromdm($serial = '')
+    {
+        {
+            // Authenticate
+            if (! $this->authorized()) {
+                die('Authenticate first.'); // Todo: return json?
+            }
+            if (authorized_for_serial($serial)) {
+                $micromdm = new micromdm_model($serial);
+                $machine = new Machine_model($serial);
+                $platform_UUID = $machine->platform_UUID;
+                $request_type = 'OSUpdateStatus';
+                //$micromdm->get_micromdm_command($force=TRUE);
+                $micromdm->run_micromdm_command($platform_UUID, $request_type);
+            }
+            redirect("clients/detail/$serial#tab_micromdm-tab");
+        }
+    }
+
+    /**
+     * ProfileList Command
+     *
+     * @return void
+     * @author Jon Crain
+     **/
+    public function profile_list_micromdm($serial = '')
+    {
+        {
+            // Authenticate
+            if (! $this->authorized()) {
+                die('Authenticate first.'); // Todo: return json?
+            }
+            if (authorized_for_serial($serial)) {
+                $micromdm = new micromdm_model($serial);
+                $machine = new Machine_model($serial);
+                $platform_UUID = $machine->platform_UUID;
+                $request_type = 'ProfileList';
+                //$micromdm->get_micromdm_command($force=TRUE);
+                $micromdm->run_micromdm_command($platform_UUID, $request_type);
+            }
+            redirect("clients/detail/$serial#tab_micromdm-tab");
+        }
+    }
+
+    /**
+     * ProvisioningProfileList Command
+     *
+     * @return void
+     * @author Jon Crain
+     **/
+    public function provisioning_profile_list_micromdm($serial = '')
+    {
+        {
+            // Authenticate
+            if (! $this->authorized()) {
+                die('Authenticate first.'); // Todo: return json?
+            }
+            if (authorized_for_serial($serial)) {
+                $micromdm = new micromdm_model($serial);
+                $machine = new Machine_model($serial);
+                $platform_UUID = $machine->platform_UUID;
+                $request_type = 'ProvisioningProfileList';
+                //$micromdm->get_micromdm_command($force=TRUE);
+                $micromdm->run_micromdm_command($platform_UUID, $request_type);
+            }
+            redirect("clients/detail/$serial#tab_micromdm-tab");
+        }
+    }
+
+    /**
+     * ShutDownDevice Command
+     *
+     * @return void
+     * @author Jon Crain
+     **/
+    public function shutdown_device_micromdm($serial = '')
+    {
+        {
+            // Authenticate
+            if (! $this->authorized()) {
+                die('Authenticate first.'); // Todo: return json?
+            }
+            if (authorized_for_serial($serial)) {
+                $micromdm = new micromdm_model($serial);
+                $machine = new Machine_model($serial);
+                $platform_UUID = $machine->platform_UUID;
+                $request_type = 'ShutDownDevice';
+                //$micromdm->get_micromdm_command($force=TRUE);
+                $micromdm->run_micromdm_command($platform_UUID, $request_type);
+            }
+            redirect("clients/detail/$serial#tab_micromdm-tab");
+        }
+    }
+
+
+
 } // END class Micromdm_controller

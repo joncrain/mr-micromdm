@@ -9,7 +9,14 @@
     "widget": {
         "title": "MicroMDM Widget"
     },
-    "restart": "Restart Computer",
+    "restart_device": "Restart Computer",
+    "shutdown_device": "Shutdown Computer",
+    "certificate_list": "Certificate List",
+    "profile_list": "Profile List",
+    "provisioning_profile_list": "Provisioning Profile List",
+    "available_os_updates": "Available OS Updates",
+    "os_update_status": "OS Updates Status",
+    "installed_application_list": "Installed Application List",
     "security_info": "Request Security Info",
     "enrollment_status": "Enrollment Status",
     "latestresponse": "Latest Response"

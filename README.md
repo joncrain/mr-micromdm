@@ -12,17 +12,16 @@ Need to add in the ability to create and store DeviceLock/EraseDevice codes as w
 
 Not sure if all of these are needed, but it'd be nice to have a config to turn them on or off:
 
-### Simple Commands to Add
+### Simple Commands Available
 These commands do not pass in any extra json:
-* ~~restart device~~
-* ~~security info~~
+* restart device
+* security info
 * available os updates
 * certificate list
 * installed application list
 * os update status
 * profile list
 * provisioning profile list
-* security info
 * shutdown device
 
 ### Phase II: Complex Commands
