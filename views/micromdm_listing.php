@@ -16,7 +16,7 @@ new Micromdm_model;
                     <th data-i18n="listing.computername" data-colname='machine.computer_name'></th>
                     <th data-i18n="serial" data-colname='reportdata.serial_number'></th>
                     <th data-i18n="username" data-colname='reportdata.long_username'></th>
-                    <th data-i18n="micromdm.machine_udid" data-colname='machine.platform_UUID'></th>
+                    <th data-i18n="micromdm.enrollment_status" data-colname='micromdm.enrollment_status'></th>
                     <th data-i18n="micromdm.latestresponse" data-colname='micromdm.latestresponse'></th>
                 </tr>
             </thead>
@@ -52,7 +52,7 @@ new Micromdm_model;
                 url: appUrl + '/datatables/data',
                 type: "POST",data:
                 function(d){
-                    d.mrColNotEmpty = "machine_udid";  // Only show if this column contains data            
+                    d.mrColNotEmpty = "enrollment_status";  // Only show if this column contains data            
                 }
             },
             dom: mr.dt.buttonDom,
@@ -64,6 +64,14 @@ new Micromdm_model;
                     var sn=$('td:eq(1)', nRow).html();
                     var link = mr.getClientDetailLink(name, sn, '#tab_micromdm-tab');
                     $('td:eq(0)', nRow).html(link);
+            
+            var enrolled = $('td:eq(3)', nRow).html();
+            $('td:eq(3)', nRow).html(function(){
+                if( enrolled == 'Enrolled'){
+                    return '<span class="label label-success">'+i18n.t('Enrolled')+'</span>';
+                }
+                return '<span class="label label-danger">'+i18n.t('Not Enrolled')+'</span>';
+            });
 	        }
 	    });
 	});
