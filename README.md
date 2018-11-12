@@ -14,7 +14,7 @@ Not sure if all of these are needed, but it'd be nice to have a config to turn t
 
 ### Simple Commands to Add
 These commands do not pass in any extra json:
-* ~~restart computer~~
+* ~~restart device~~
 * ~~security info~~
 * available os updates
 * certificate list
@@ -22,7 +22,6 @@ These commands do not pass in any extra json:
 * os update status
 * profile list
 * provisioning profile list
-* restart device
 * security info
 * shutdown device
 
