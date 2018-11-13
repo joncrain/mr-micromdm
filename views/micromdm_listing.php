@@ -16,13 +16,14 @@ new Micromdm_model;
                     <th data-i18n="listing.computername" data-colname='machine.computer_name'></th>
                     <th data-i18n="serial" data-colname='reportdata.serial_number'></th>
                     <th data-i18n="username" data-colname='reportdata.long_username'></th>
-                    <th data-i18n="micromdm.enrollment_status" data-colname='micromdm.enrollment_status'></th>
+                    <th data-i18n="micromdm.mdm_enrollment_status" data-colname='micromdm.mdm_enrollment_status'></th>
+                    <th data-i18n="micromdm.dep_enrollment_status" data-colname='micromdm.dep_enrollment_status'></th>
                     <th data-i18n="micromdm.latestresponse" data-colname='micromdm.latestresponse'></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td data-i18n="listing.loading" colspan="5" class="dataTables_empty"></td>
+                    <td data-i18n="listing.loading" colspan="6" class="dataTables_empty"></td>
                 </tr>
             </tbody>
         </table>
@@ -52,7 +53,7 @@ new Micromdm_model;
                 url: appUrl + '/datatables/data',
                 type: "POST",data:
                 function(d){
-                    d.mrColNotEmpty = "enrollment_status";  // Only show if this column contains data            
+                    d.mrColNotEmpty = "mdm_enrollment_status";  // Only show if this column contains data            
                 }
             },
             dom: mr.dt.buttonDom,
@@ -65,9 +66,17 @@ new Micromdm_model;
                     var link = mr.getClientDetailLink(name, sn, '#tab_micromdm-tab');
                     $('td:eq(0)', nRow).html(link);
             
-            var enrolled = $('td:eq(3)', nRow).html();
+            var mdm_enrolled = $('td:eq(3)', nRow).html();
             $('td:eq(3)', nRow).html(function(){
-                if( enrolled == 'Enrolled'){
+                if( mdm_enrolled == 'Enrolled'){
+                    return '<span class="label label-success">'+i18n.t('Enrolled')+'</span>';
+                }
+                return '<span class="label label-danger">'+i18n.t('Not Enrolled')+'</span>';
+            });
+            
+            var dep_enrolled = $('td:eq(4)', nRow).html();
+            $('td:eq(4)', nRow).html(function(){
+                if( dep_enrolled == 'Enrolled'){
                     return '<span class="label label-success">'+i18n.t('Enrolled')+'</span>';
                 }
                 return '<span class="label label-danger">'+i18n.t('Not Enrolled')+'</span>';

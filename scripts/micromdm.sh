@@ -18,15 +18,23 @@ fi
 mkdir -p "${CACHEDIR}"
 
 # Business logic goes here
-micromdm_profile_identifier="com.github.micromdm.micromdm.enroll"
-enroll_check=$(profiles list | grep $micromdm_profile_identifier)
+/usr/bin/profiles status -type enrollment | grep 'Enrolled via DEP: Yes'
 if [ $? = 0 ]; then
-	echo 'Machine Enrolled in MicroMDM'
-	enrollment='Enrolled'
+	echo 'Machine Enrolled in DEP'
+	dep_enrollment='Enrolled'
 else
-	echo 'Machine Not Enrolled in MicroMDM'
-	enrollment='Not Enrolled'
+	echo 'Machine Not Enrolled in DEP'
+	dep_enrollment='Not Enrolled'
+fi
+/usr/bin/profiles status -type enrollment | grep 'MDM enrollment: Yes*'
+if [ $? = 0 ]; then
+	echo 'Machine Enrolled in MDM'
+	mdm_enrollment='Enrolled'
+else
+	echo 'Machine Not Enrolled in MDM'
+	mdm_enrollment='Not Enrolled'
 fi
 
 # Output data here
-echo "enrollment_status${SEPARATOR}$enrollment" > ${OUTPUT_FILE}
+echo "mdm_enrollment_status${SEPARATOR}$mdm_enrollment" > ${OUTPUT_FILE}
+echo "dep_enrollment_status${SEPARATOR}$dep_enrollment" >> ${OUTPUT_FILE}
