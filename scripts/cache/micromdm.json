@@ -1,0 +1,5 @@
+{
+    "dep_enrollment_status": "No", 
+    "mdm_enrollment_status": "Yes (User Approved)", 
+    "micromdm_version": "1.1.1"
+}

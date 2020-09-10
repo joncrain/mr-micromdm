@@ -1,0 +1,17 @@
+client_tabs:
+    micromdm:
+        view: micromdm_tab
+        i18n: micromdm.title
+listings:
+    micromdm:
+        view: micromdm_listing
+        i18n: micromdm.listing.title
+reports:
+    micromdm:
+        view: micromdm_report
+        i18n: micromdm.report.title
+widgets:
+    micromdm_mdm_enrollment_status:
+        view: micromdm_mdm_enrollment_status_widget
+    micromdm_dep_enrollment_status:
+        view: micromdm_dep_enrollment_status_widget

@@ -1,0 +1,13 @@
+type: button
+widget_id: micromdm-dep_enrollment_status-button-widget
+api_url: /module/micromdm/get_list/dep_enrollment_status
+i18n_title: micromdm.widget.dep_enrollment_status_title
+icon: fa-laptop
+listing_link: /show/listing/micromdm/micromdm
+buttons:
+  - label: "0"
+    i18n_label: off
+    class: btn-danger
+  - label: "1"
+    i18n_label: on
+    class: btn-success

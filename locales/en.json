@@ -1,24 +1,19 @@
 {
-    "link": "micromdm Link",
+    "column": {
+        "mdm_enrollment_status": "MDM Enrollment Status",
+        "dep_enrollment_status": "DEP Enrollment Status",
+        "micromdm_version": "MicroMDM Version"
+    },
     "listing": {
-        "title": "MicroMDM"
+        "title": "micromdm"
     },
     "report": {
-        "title": "MicroMDM Report"
+        "title": "micromdm"
     },
+    "title": "micromdm",
     "widget": {
-        "title": "MicroMDM Widget"
-    },
-    "restart_device": "Restart Computer",
-    "shutdown_device": "Shutdown Computer",
-    "certificate_list": "Certificate List",
-    "profile_list": "Profile List",
-    "provisioning_profile_list": "Provisioning Profile List",
-    "available_os_updates": "Available OS Updates",
-    "os_update_status": "OS Updates Status",
-    "installed_application_list": "Installed Application List",
-    "security_info": "Request Security Info",
-    "mdm_enrollment_status": "MDM Enrollment Status",
-    "dep_enrollment_status": "DEP Enrollment Status",
-    "latestresponse": "Latest Response"
+        "mdm_enrollment_status_title": "MDM Enrollment Status",
+        "dep_enrollment_status_title": "DEP Enrollment Status",
+        "micromdm_version_title": "MicroMDM Version"
+    }
 }

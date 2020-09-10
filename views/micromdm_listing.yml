@@ -1,0 +1,14 @@
+i18n_title: micromdm.listing.title
+table:
+    -   column: machine.computer_name
+        i18n_header: listing.computername
+        formatter: clientDetail
+        tab_link: micromdm
+    -   column: reportdata.serial_number
+        i18n_header: serial
+    -   column: micromdm.mdm_enrollment_status
+        i18n_header: micromdm.column.mdm_enrollment_status
+        formatter: binaryYesNo
+    -   column: micromdm.dep_enrollment_status
+        i18n_header: micromdm.column.dep_enrollment_status
+        formatter: binaryYesNo
